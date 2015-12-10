@@ -5,7 +5,7 @@ var gpio = require('rpi-gpio');
 
 var contador = 0;
 
-app.get('nodejs/rpi-liga-led/inicia',function(req,res){
+app.get('/nodejs/rpi-liga-led/inicia',function(req,res){
 	startGPIO();
 	res.end("Iniciou porta");
 });
