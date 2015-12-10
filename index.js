@@ -37,3 +37,7 @@ function closeGPIO(){
 		console.log("Fim de programa");
 	});
 }
+
+app.listen(3000,function(){
+	console.log("iniciou");
+});
