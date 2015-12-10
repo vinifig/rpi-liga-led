@@ -6,25 +6,25 @@ var gpio = require('rpi-gpio');
 var contador = 0;
 
 app.get('/nodejs/rpi-liga-led/inicia',function(req,res){
+	res.end("Iniciou gpio");
 	startGPIO();
-	res.end("Iniciou porta");
 });
 
 app.get('/nodejs/rpi-liga-led/muda',function(req,res){
-	write();
 	res.end("Mudou");
+	write();
 });
 
-app.get('nodejs/rpi-liga-led/finaliza',function(req,res){
-	closeGPIO();
+app.get('/nodejs/rpi-liga-led/finaliza',function(req,res){
 	res.end("Fechou porta");
+	closeGPIO();
 });
 
 
 function write(){
-	gpio.write(12, contador & 1, function(err){
+	gpio.write(12, !(contador++ & 1), function(err){
 		if(err) throw err;
-		console.log("Muda");
+		console.log("Muda" + contador);
 	});
 }
 
@@ -39,5 +39,5 @@ function closeGPIO(){
 }
 
 app.listen(3000,function(){
-	console.log("iniciou");
+	console.log("iniciou porta 3000");
 });
