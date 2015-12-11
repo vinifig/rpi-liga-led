@@ -4,6 +4,7 @@ var app = new Express();
 var gpio = require('rpi-gpio');
 
 var contador = 0;
+var iniciado = false;
 
 app.get('/nodejs/rpi-liga-led/inicia',function(req,res){
 	res.end("Iniciou gpio");
@@ -22,6 +23,8 @@ app.get('/nodejs/rpi-liga-led/finaliza',function(req,res){
 
 
 function write(){
+	if(!iniciado)
+		return startGPIO();
 	gpio.write(12, !(contador++ & 1), function(err){
 		if(err) throw err;
 		console.log("Muda" + contador);
@@ -29,12 +32,15 @@ function write(){
 }
 
 function startGPIO(){
+	contador = 0;
+	iniciado = true;
 	gpio.setup(12, gpio.DIR_OUT, write);
 }
 
 function closeGPIO(){
 	gpio.destroy(function(){
-		console.log("Fim de programa");
+		iniciado = false;
+		console.log("GPIO FECHADA COM SUCESSO");
 	});
 }
 
