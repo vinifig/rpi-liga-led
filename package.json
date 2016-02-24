@@ -1,0 +1,19 @@
+{
+  "name": "rpi-led",
+  "version": "1.0.0",
+  "description": "Acendendo led com um raspberry pi usando nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinifig/rpi-liga-led.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinifig/rpi-liga-led/issues"
+  },
+  "homepage": "https://github.com/vinifig/rpi-liga-led#readme"
+}
